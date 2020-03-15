@@ -16,6 +16,7 @@ HIGHLEVEL STEPS:
 # PROVIDERS
 ##################################################################################
 
+# AWS as the provider
 provider "aws" {
   # var is a keyword in HCL
   # every provider block has some sort of credentials to access the provider, the region to deploy the resources
@@ -27,6 +28,7 @@ provider "aws" {
 
 ##################################################################################
 # DATA - pull data outside of config file. Here we are getting from provider itself
+# ami-0e8c04af2729ff1bb
 ##################################################################################
 data "aws_ami" "aws-linux" {
   most_recent = true
@@ -63,9 +65,9 @@ resource "aws_default_vpc" "default" {}
 # To allow EC2 instance to receive traffic, you need to create a SecurityGroup
 # to allow ssh connectons to the instance, also open 80 port
 ##create respurce #2
-resource "aws_security_group" "allow_ssh" {
-  name = "nginx_demo"
-  description = "Allow ports for nginx demo"
+resource "aws_security_group" "allow_ssh_and_web_sg" {
+  name = "allow-ssh-and-web-sg"
+  description = "Allow SSH(22) and Web(80) Ports"
   vpc_id = aws_default_vpc.default.id
 
   ingress {
@@ -105,7 +107,7 @@ resource "aws_instance" "nginx" {
   instance_type = "t2.micro"
   key_name = var.key_name
   vpc_security_group_ids = [
-    aws_security_group.allow_ssh.id]
+    aws_security_group.allow_ssh_and_web_sg.id]
 
   connection {
     #define conn block inside resource for allowing ssh; below provisioner will be using this SSH
