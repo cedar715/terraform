@@ -9,4 +9,4 @@
 .idea
 *.iml
 _scratch/
-
+*/*.tfvars
