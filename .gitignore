@@ -10,3 +10,8 @@
 *.iml
 _scratch/
 */*.tfvars
+**/tfkey
+**/tfkey.pub
+tfkey
+tfkey.pub
+

@@ -12,10 +12,15 @@ variable "instance_type" {
   default = "t2.micro"
 }
 variable "path_to_public_key" {
+  default = "tfkey.pub"
+}
+
+variable "path_to_pvt_key" {
+  default = "tfkey"
 }
 
 variable "key_name" {
-  default = "tfkey"
+  default = "tfkey2"
 }
 
 variable "vpc_cidr_block" {
@@ -27,3 +32,4 @@ variable "tier2_sn_cidr_block" {
 variable "tier3_sn_cidr_block" {
   default = "10.0.2.0/24"
 }
+variable "snapshot_id" {}
