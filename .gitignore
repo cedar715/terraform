@@ -1,11 +1,13 @@
 .terraform
 *.tfstate
+*.tfplan
 *.tfstate.backup
 *.tfvars
 **/.terraform
 **/*.tfstate
 **/*.tfstate.backup
 **/*.tfvars
+**/*.tfplan
 .idea
 *.iml
 _scratch/
