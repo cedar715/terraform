@@ -1,0 +1,22 @@
+#cloud-config
+packages:
+  - docker.io
+  - nmap
+
+runcmd:
+  - 'echo whoami >> /cloud-int.log'
+
+write_files:
+  - path: /etc/motd
+    content: |
+      Hello, this instance is initialized w/ cloud-init
+      Welcome!!
+    owner: root:root
+    permissions: '0644'
+
+  - path: /etc/server-id
+    content: YWJjLTEyMwo=
+    encoding: b64
+    permissions: '0600'
+
+timezone: "Asia/Kolkata"
