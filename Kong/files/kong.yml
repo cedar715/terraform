@@ -6,4 +6,4 @@ services:
     routes:
       - name: mocking
         paths:
-          - /mockye
+          - /mock
